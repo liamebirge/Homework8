@@ -14,10 +14,60 @@
 					Question 1: <u>List the oldest 10 Victoria, BC users and order them by age.</u>
 				</div>
 				<div class="codeQ1">
-				
+					<ol>
+						<li>| select top 10 Age, displayName</li>
+						<li>| from Users</li>
+ 						<li>| where Location like 'Victoria B%C%'</li>
+						<li>| order by Age</li>
+					</ol>
 				</div>
 				<div class="resultQ1">
-					
+					<table border="1">
+						<tr>
+							<td>Age</td>
+							<td>displayName</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>matt</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>kiriwhan</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>seejayare</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>John Revoy</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>chriswhiteley</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Julkata</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>Mike Gossland</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>James Gayfer</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>user1208001</td>
+						</tr>
+						<tr>
+							<td>19</td>
+							<td>Botato</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<div id="question2">
