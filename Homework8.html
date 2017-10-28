@@ -9,100 +9,166 @@
 		</header>
 		<hr />
 		<section>
-			<div id="question1">
-				<div class="question">
-					Question 1: <u>List the oldest 10 Victoria, BC users and order them by age.</u>
-				</div>
-				<div class="codeQ1">
-					<ol>
-						<li>| select top 10 Age, displayName</li>
-						<li>| from Users</li>
- 						<li>| where Location like 'Victoria B%C%'</li>
-						<li>| order by Age</li>
-					</ol>
-				</div>
-				<div class="resultQ1">
-					<table border="1">
-						<tr>
-							<td>Age</td>
-							<td>displayName</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>matt</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>kiriwhan</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>seejayare</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>John Revoy</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>chriswhiteley</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Julkata</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>Mike Gossland</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>James Gayfer</td>
-						</tr>
-						<tr>
-							<td></td>
-							<td>user1208001</td>
-						</tr>
-						<tr>
-							<td>19</td>
-							<td>Botato</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-			<div id="question2">
-				<div class="question">
-					Question 2: <u>List the 10 highest reputation users in Victoria that have answered questions with the tag javascript.</u>
-				</div>
-				<div class="codeQ2">
+			<ol id="questions">
+				<li>
+					<div class="question">
+						List the oldest 10 Victoria, BC users and order them by age.
+					</div>
+					<div class="codeQ1">
+						<ol>
+							<li>| select top 10 Age, displayName</li>
+							<li>| from Users</li>
+	 						<li>| where Location like 'Victoria B%C%'</li>
+							<li>| order by Age</li>
+						</ol>
+					</div>
+					<div class="resultQ1">
+						<table border="1">
+							<tr>
+								<td>Age</td>
+								<td>displayName</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>matt</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>kiriwhan</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>seejayare</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>John Revoy</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>chriswhiteley</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Julkata</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Mike Gossland</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>James Gayfer</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>user1208001</td>
+							</tr>
+							<tr>
+								<td>19</td>
+								<td>Botato</td>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="question">
+						List the 10 highest reputation users in Victoria that have answered questions with the tag javascript.
+					</div>
+					<div class="codeQ2">
+						<ol>
+							<li>| select distinct</li>
+  							<li>| top 10 Reputation, DisplayName, TagName</li>
+							<li>| from Posts, Users, Tags</li>
+							<li>| where</li>
+  							<li>| TagName IN ('javascript')</li>
+  							<li>| and Location like ('Victoria B%C%')</li>
+							<li>| order by Reputation desc</li>
+						</ol>
+					</div>
+					<div class="resultQ2">
+						<table border="1">
+							<tr>
+								<td>Reputation</td>
+								<td>DisplayName</td>
+								<td>TagName</td>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+							<tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+							</tr>
+						</table>
+					</div>
+				</li>
+				<li>
+					<div class="question">
+						List the top 5 Victoria developers by accepted answer percentage.
+					</div>
+					<div class="codeQ3">
 				
-				</div>
-				<div class="resultQ2">
+					</div>
+					<div class="resultQ3">
 					
-				</div>
-			</div>
-			<div id="question3">
-				<div class="question">
-					Question 3: <u>List the top 5 Victoria developers by accepted answer percentage.</u>
-				</div>
-				<div class="codeQ3">
+					</div>
+				</li>
+				<li>
+					<div class="question">
+						List the top 10 Victoria developers by accepted answer percentage on questins with the tag javascript.
+					</div>
+					<div class="codeQ4">
 				
-				</div>
-				<div class="resultQ3">
+					</div>
+					<div class="resultQ4">
 					
-				</div>
-			</div>
-			<div id="question4">
-				<div class="question">
-					Question 1: <u>List the top 10 Victoria developers by accepted answer percentage on questins with the tag javascript.</u>
-				</div>
-				<div class="codeQ4">
-				
-				</div>
-				<div class="resultQ4">
-					
-				</div>
-			</div>
+					</div>
+				</li>
+			</ol>
 		</section>
 	</body>
 </html>
