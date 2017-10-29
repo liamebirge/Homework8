@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Database Hokmework</title>
-		<link rel="stylesheet" href=""
+		<link rel="stylesheet" href="homework8style.css" type="text/css" />
 	</head>
 	<body>
 		<header>
@@ -10,283 +10,293 @@
 		</header>
 		<hr />
 		<section>
-			<ol id="questions">
-				<li>
-					<div id="question1">
-						<div class="question">
-							List the oldest 10 Victoria, BC users and order them by age.
-						</div>
-						<div class="codeQ1">
-							<ul class="codeList">
-								<li>select top 10 Age, displayName</li>
-								<li>from Users</li>
-		 						<li>where Location like 'Victoria B%C%'</li>
-								<li>order by Age</li>
-							</ul>
-						</div>
-						<div class="resultQ1">
-							<table border="1">
-								<tr>
-									<td>Age</td>
-									<td>displayName</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>matt</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>kiriwhan</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>seejayare</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>John Revoy</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>chriswhiteley</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Julkata</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>Mike Gossland</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>James Gayfer</td>
-								</tr>
-								<tr>
-									<td></td>
-									<td>user1208001</td>
-								</tr>
-								<tr>
-									<td>19</td>
-									<td>Botato</td>
-								</tr>
-							</table>
-						</div>
+			<div id="questions">
+				<div id="question1">
+					<div class="question">
+						<h4>
+							<U>Question 1</u>: <a href="Screencaps/Question1.JPG">Screencap Here</a>
+						</h4> 
+						List the oldest 10 Victoria, BC users and order them by age.
 					</div>
-				</li>
-				<li>
-					<div id="question2">
-						<div class="question">
-							List the 10 highest reputation users in Victoria that have answered questions with the tag javascript.
-						</div>
-						<div class="codeQ2">
-							<ul class="codeList">
-								<li>select distinct</li>
-	  							<li>top 10 Reputation, DisplayName, TagName</li>
-								<li>from Posts, Users, Tags</li>
-								<li>where</li>
-	  							<li>TagName IN ('javascript')</li>
-	  							<li>and Location like ('Victoria B%C%')</li>
-								<li>order by Reputation desc</li>
-							</ul>
-						</div>
-						<div class="resultQ2">
-							<table border="1">
-								<tr>
-									<td>Reputation</td>
-									<td>DisplayName</td>
-									<td>TagName</td>
-								</tr>
-								<tr>
-									<td>794</td>
-									<td>matt</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>379</td>
-									<td>nhoughto</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>181</td>
-									<td>Mike Gossland</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>109</td>
-									<td>mfroese</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>31</td>
-									<td>John Revoy</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>23</td>
-									<td>Kelly Hays</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>21</td>
-									<td>kiriwhan</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>20</td>
-									<td>Botato</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>16</td>
-									<td>seejayare</td>
-									<td>javascript</td>
-								</tr>
-								<tr>
-									<td>13</td>
-									<td>James Gayfer</td>
-									<td>javascript</td>
-								</tr>
-							</table>
-						</div>
+					<div class="codeQ1">
+						<ol class="codeList">
+							<li>select top 10 Age, displayName</li><hr />
+							<li>from Users</li><hr />
+		 					<li>where Location like 'Victoria B%C%'</li><hr />
+							<li>order by Age</li><hr />
+						</ol>
 					</div>
-				</li>
-				<li>
-					<div id="question3">
-						<div class="question">
-							List the top 5 Victoria developers by accepted answer percentage.
-						</div>
-						<div class="codeQ3">
-							<ul class="codeList">
-								<li>select top 5</li>
-	  							<li>a.OwnerUserId as [User Link],</li>
-	  							<li>Count(a.Id) as [Total Answers],</li>
-								<li>Round(Sum(Case q.AcceptedAnswerId when a.Id then 1 else 0 end) * 100.0 / Count(a.Id), 1) as [Percentage Accepted]</li>
-								<li>from</li>
-	  							<li>Users,</li>
-	  							<li>Posts as a</li>
-	  							<li>join</li>
-	  							<li>Posts as q</li>
-	    						<li> on a.ParentId = q.Id</li>
-								<li>where</li>
-								<li>q.PostTypeId = 1</li>
-								<li>and a.PostTypeId = 2</li>
-								<li>and Users.Location like 'Victoria BC'</li>
-								<li>group by</li>
-								<li>a.OwnerUserId</li>
-								<li>having</li>
-								<li>Count(a.Id) between 0</li>
-								<li>and 100</li>
-								<li>order by</li>
-								<li>[Percentage Accepted] DESC</li>
-							</ul>
-						</div>
-						<div class="resultQ3">
-							<table border="1">
-								<tr>
-									<td>User Link</td>
-									<td>Percentage Accepted</td>
-								</tr>
-								<tr>
-									<td>Corona S.</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>Corona S.</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>Mato Skok</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>Jaipanos</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>Chintan Shah</td>
-									<td>100</td>
-								</tr>
-							</table>
-						</div>
+					<div class="resultQ1">
+						<table border="1">
+							<tr>
+								<td>Age</td>
+								<td>displayName</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>chriswhiteley</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>kiriwhan</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>John Revoy</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Julkata</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>matt</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>James Gayfer</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>seejayare</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>user1208001</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>Mike Gossland</td>
+							</tr>
+							<tr>
+								<td>19</td>
+								<td>Botato</td>
+							</tr>
+						</table>
 					</div>
-				</li>
-				<li>
-					<div id="question4">
-						<div class="question">
-							List the top 10 Victoria developers by accepted answer percentage on questions with the tag javascript.
-						</div>
-						<div class="codeQ4">
-							<ul class="codeList">
-								<li>SELECT TOP 5</li>
-	  							<li>Tags.TagName,</li>
-	  							<li>a.OwnerUserId AS [User Link],</li>
-	  							<li>COUNT(a.Id) AS [Total Answers],</li>
-	  							<li>Round(Sum(CASE q.AcceptedAnswerId WHEN a.Id THEN 1 ELSE 0 END) * 100.0 / Count(a.Id), 1) AS [Percentage Accepted]</li>
-								<li>FROM</li>
-	  							<li>Tags,</li>
-	  							<li>Users,</li>
-	 							<li>Posts AS a</li>
-	 							<li>JOIN</li>
-	 							<li>Posts AS q</li>
-	 							<li>ON a.ParentId = q.Id</li>
-	 							<li>WHERE</li>
-	 							<li>q.PostTypeId = 1</li>
-	 							<li>AND a.PostTypeId = 2</li>
-	 							<li>and Users.Location like 'Victoria B.C.'</li>
-	 							<li>and Tags.TagName like 'javascript'</li>
-	 							<li>GROUP BY</li>
-	 							<li>a.OwnerUserId, Tags.TagName</li>
-	 							<li>HAVING</li>
-	 							<li>Count(a.Id) BETWEEN 0</li>
-	 							<li>AND   100</li>
-	 							<li>ORDER BY</li>
-	 							<li>[Percentage Accepted] Desc</li>
-	 						</ul>
-						</div>
-						<div class="resultQ4">
-							<table border="1">
-								<tr>
-									<td>TagName</td>
-									<td>User Link</td>
-									<td>Total Answers</td>
-									<td>Percentage Accepted</td>
-								</tr>
-								<tr>
-									<td>javascript</td>
-									<td>Corona S.</td>
-									<td>1</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>javascript</td>
-									<td>P.SATHYA</td>
-									<td>1</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>javascript</td>
-									<td>Mato Skok</td>
-									<td>1</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>javascript</td>
-									<td>Chintan Shah</td>
-									<td>1</td>
-									<td>100</td>
-								</tr>
-								<tr>
-									<td>javascript</td>
-									<td>Jaipanos</td>
-									<td>1</td>
-									<td>100</td>
-								</tr>
-							</table>
-						</div>
+				</div>
+				<div class="questions" id="question2">
+					<div class="question">
+						<h4>
+							<u>Question 2</u>: <a href="Screencaps/Question2.JPG">Screencap Here</a>
+						</h4> 
+						List the 10 highest reputation users in Victoria that have answered questions with the tag javascript.
 					</div>
-				</li>
-			</ol>
+					<div class="codeQ2">
+						<ol class="codeList">
+							<li>select distinct</li><hr />
+	  						<li>top 10 Reputation, DisplayName, TagName</li><hr />
+							<li>from Posts, Users, Tags</li><hr />
+							<li>where</li><hr />
+	  						<li>TagName IN ('javascript')</li><hr />
+	  						<li>and Location like ('Victoria B%C%')</li><hr />
+							<li>order by Reputation desc</li><hr />
+						</ol>
+					</div>
+					<div class="resultQ2">
+						<table border="1">
+							<tr>
+								<td>Reputation</td>
+								<td>DisplayName</td>
+								<td>TagName</td>
+							</tr>
+							<tr>
+								<td>794</td>
+								<td>matt</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>379</td>
+								<td>nhoughto</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>181</td>
+								<td>Mike Gossland</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>109</td>
+								<td>mfroese</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>31</td>
+								<td>John Revoy</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>23</td>
+								<td>Kelly Hays</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>21</td>
+								<td>kiriwhan</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>20</td>
+								<td>Botato</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>16</td>
+								<td>seejayare</td>
+								<td>javascript</td>
+							</tr>
+							<tr>
+								<td>13</td>
+								<td>James Gayfer</td>
+								<td>javascript</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="questions" id="question3">
+					<div class="question">
+						<h4>
+							<u>Question 3:</u> <a href="Screencaps/Question3.JPG">Screencap Here</a>
+						</h4> 
+						List the top 5 Victoria developers by accepted answer percentage.
+					</div>
+					<div class="codeQ3">
+						<ol class="codeList">
+							<li>select top 5</li><hr />
+	  						<li>a.OwnerUserId as [User Link],</li><hr />
+	  						<li>Count(a.Id) as [Total Answers],</li><hr />
+							<li>Round(Sum(Case q.AcceptedAnswerId when a.Id then 1 else 0 end) * 100.0 / Count(a.Id), 1) as [Percentage Accepted]</li><hr />
+							<li>from</li><hr />
+	  						<li>Users,</li><hr />
+	  						<li>Posts as a</li><hr />
+	  						<li>join</li><hr />
+	  						<li>Posts as q</li><hr />
+	    					<li> on a.ParentId = q.Id</li><hr />
+							<li>where</li><hr />
+							<li>q.PostTypeId = 1</li><hr />
+							<li>and a.PostTypeId = 2</li><hr />
+							<li>and Users.Location like 'Victoria BC'</li><hr />
+							<li>group by</li><hr />
+							<li>a.OwnerUserId</li><hr />
+							<li>having</li><hr />
+							<li>Count(a.Id) between 0</li><hr />
+							<li>and 100</li><hr />
+							<li>order by</li><hr />
+							<li>[Percentage Accepted] DESC</li><hr />
+						</ol>
+					</div>
+					<div class="resultQ3">
+						<table border="1">
+							<tr>
+								<td>User Link</td>
+								<td>Total Answers</td>
+								<td>Percentage Accepted</td>
+							</tr>
+							<tr>
+								<td>Maxsteel</td>
+								<td>11</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>Kefler</td>
+								<td>11</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>Ronald Fallas</td>
+								<td>11</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>elprogrammer</td>
+								<td>11</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>naan kadavul</td>
+								<td>11</td>
+								<td>100</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="questions" id="question4">
+					<div class="question">
+						<h4>
+							<u>Question 4</u>: <a href="Screencaps/Question4.JPG">Screencap Here</a>
+						</h4> 
+						List the top 10 Victoria developers by accepted answer percentage on questions with the tag javascript.
+					</div>
+					<div class="codeQ4">
+						<ol class="codeList">
+							<li>SELECT TOP 5</li><hr />
+	  						<li>Tags.TagName,</li><hr />
+	  						<li>a.OwnerUserId AS [User Link],</li><hr />
+	  						<li>COUNT(a.Id) AS [Total Answers],</li><hr />
+	  						<li>Round(Sum(CASE q.AcceptedAnswerId WHEN a.Id THEN 1 ELSE 0 END) * 100.0 / Count(a.Id), 1) AS [Percentage Accepted]</li><hr />
+							<li>FROM</li><hr />
+  							<li>Tags,</li><hr />
+	 						<li>Users,</li><hr />
+	 						<li>Posts AS a</li><hr />
+	 						<li>JOIN</li><hr />
+	 						<li>Posts AS q</li><hr />
+	 						<li>ON a.ParentId = q.Id</li><hr />
+	 						<li>WHERE</li><hr />
+							<li>q.PostTypeId = 1</li><hr />
+	 						<li>AND a.PostTypeId = 2</li><hr />
+	 						<li>and Users.Location like 'Victoria B.C.'</li><hr />
+	 						<li>and Tags.TagName like 'javascript'</li><hr />
+	 						<li>GROUP BY</li><hr />
+	 						<li>a.OwnerUserId, Tags.TagName</li><hr />
+	 						<li>HAVING</li><hr />
+ 							<li>Count(a.Id) BETWEEN 0</li><hr />
+							<li>AND   100</li><hr />
+	 						<li>ORDER BY</li><hr />
+	 						<li>[Percentage Accepted] Desc</li><hr />
+	 					</ol>
+					</div>
+					<div class="resultQ4">
+						<table border="1">
+							<tr>
+								<td>TagName</td>
+								<td>User Link</td>
+								<td>Total Answers</td>
+								<td>Percentage Accepted</td>
+							</tr>
+							<tr>
+								<td>javascript</td>
+								<td>Corona S.</td>
+								<td>1</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>javascript</td>
+								<td>P.SATHYA</td>
+								<td>1</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>javascript</td>
+								<td>Mato Skok</td>
+								<td>1</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>javascript</td>
+								<td>Chintan Shah</td>
+								<td>1</td>
+								<td>100</td>
+							</tr>
+							<tr>
+								<td>javascript</td>
+								<td>Jaipanos</td>
+								<td>1</td>
+							<td>100</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
 		</section>
 	</body>
 </html>
