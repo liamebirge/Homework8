@@ -21,11 +21,13 @@ tr td{
 	text-align: center;
 }
 .codeQ1, .codeQ2, .codeQ3, .codeQ4{
-
 	border:1px solid black;
 	border-radius: 5px;
 	margin-bottom: 10px;
-	width:650px;
+	min-width:400px;
+	max-width:650px;
+	width:auto;
+
 }
 ol.codeList{
 	margin:0px;
